@@ -1,0 +1,12 @@
+
+
+
+
+
+.card {
+    margin: auto;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    padding: 10px;
+}
