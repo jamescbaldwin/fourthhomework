@@ -3,38 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.C. Coding Assessment</title>
-    <link rel="stylesheet" href="<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">">
+    <link rel="stylesheet" href="<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <title>JavaScript Quiz</title>
 </head>
 <body >
+
     <header class="container">
-        <div id="highscore" style="text-align: left;">View High Scores!</div>;
-        <div id="timer" style="text-align: right;">Time Remaining:</div>;
+        <div class="row">
+            <div class="col-md-6"> 
+                <div id="highscore">View Highscore!</div>             
+              </div>
+              <div class="col-md-6">
+                  <div id="timer" class="text-right">Time Remaining:</div>
+              </div>
+            </div>
     </header>
-   <button id="startbutton">Begin Quiz!</button>
+
+
+   <button id="startbutton" class="text-center">Begin Quiz!</button>
         <div class="card" style="width: 18rem; align-items: center;">
-            <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-              <h3 id="questionNum">JavaScript Quiz!</h5>
-              <p id="quizQuestion">This quiz is designed to assess one's knowledge of JavaScript basics, as well as demonstrate an ability to use the langauge to produce a dynamic layout for webpage users. Remember:</p>
-            </div>
-            <ol class="answerChoices">
-              <li id="answer1">This quiz will be multiple-choice and timed</li>
-              <li id="answer2">Incorrect answers will result in a 10-second deduction</li>
-              <li id="answer3">Select an answer by clicking</li>
-              <li id="answer4">Enter your initials after final question to submit score</li>
-            </ol>
-            <div class="card-body">
+              <h3 id="questionNum">Coding Quiz Challenge!</h5>
+            <ul class="answerChoices">
+            <button style="padding: 6px">
+                <li class="answerChoice" id="answer1" onclick="checkAnswer('1')">This quiz will be multiple-choice and timed</li> 
+            </button> 
+            <button style="padding: 6px">
+                <li class="answerChoice" id="answer2" onclick="checkAnswer('2')">Incorrect answers will result in a 10-second deduction</li>
+            </button>
+            <button style="padding: 6px">
+                <li class="answerChoice" id="answer3" onclick="checkAnswer('3')">Select an answer by clicking</li>
+            </button>
+            <button style="padding: 6px">
+                <li class="answerChoice" id="answer4" onclick="checkAnswer('4')">Enter your initials after final question to submit score</li>
+            </button>
+            </ul>
+            <!-- <div class="card-body">
                 <button id="prevQuestion">Previous Question</button>
-                <button id="nextQuestion">Next Question</button>
-              
-            </div>
+                <button id="nextQuestion">Next Question</button>            
+            </div> -->
+            
           </div>
 
+<div class="col-md-12 text-center">
+    <div id="bottomText">
+        <h3 id="reviewAnswer">Answer</h3>
+        <label>Enter User Initials</label>
+        <input type="text: align-left" id="userInitials">
+        <button id="player" onclick='player'> player information
+        </button>
+    </div>
+</div>
     
 
 
-    <script src="script.js"></script>
+    <script type='text/javascript' src="./script.js"></script>
 </body>
 </html>
