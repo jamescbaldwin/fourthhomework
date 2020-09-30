@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
     <title>JavaScript Quiz</title>
 </head>
 <body >
-
-    <header class="container">
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container-fluid">
+              <div id="highscore" class="nav-item nav-link"> High Scores</div>
+              <h1 id="navbar-title"></h1>
+              <table id=timers style="text-align: right;">
+                <tr>
+                  <td> Time Remaining: </td>
+                  <td> <span id="timer" class="nav-item"></span> </td>
+                </tr>
+              </table>
+          </div>
+        </div>
+      </nav>
+    <!-- <header class="container">
         <div class="row">
             <div class="col-md-6"> 
                 <div id="highscore">View Highscore!</div>             
@@ -18,14 +30,15 @@
                   <div id="timer" class="text-right">Time Remaining:</div>
               </div>
             </div>
-    </header>
+    </header> -->
 
 
-   <button id="startbutton" class="text-center">Begin Quiz!</button>
-        <div class="card" style="width: 18rem; align-items: center;">
-            <div class="card-body">
-              <h3 id="questionNum">Coding Quiz Challenge!</h5>
-            <ul class="answerChoices">
+   <!-- <button id="startbutton" class="text-center">Begin Quiz!</button> -->
+   <div>  
+   <div class="card" style="width: 18rem; align-items: center;">
+            <div class="container-fluid">
+              <h3 id="content" style="text-align: center;">Coding Quiz Challenge!</h5>
+            <!-- <ul class="answerChoices">
             <button style="padding: 6px">
                 <li class="answerChoice" id="answer1" onclick="checkAnswer('1')">This quiz will be multiple-choice and timed</li> 
             </button> 
@@ -38,15 +51,16 @@
             <button style="padding: 6px">
                 <li class="answerChoice" id="answer4" onclick="checkAnswer('4')">Enter your initials after final question to submit score</li>
             </button>
-            </ul>
+            </ul> -->
             <!-- <div class="card-body">
                 <button id="prevQuestion">Previous Question</button>
                 <button id="nextQuestion">Next Question</button>            
             </div> -->
             
           </div>
+        </div> 
 
-<div class="col-md-12 text-center">
+<!-- <div class="col-md-12 text-center">
     <div id="bottomText">
         <h3 id="reviewAnswer">Answer</h3>
         <label>Enter User Initials</label>
@@ -54,7 +68,7 @@
         <button id="player" onclick='player'> player information
         </button>
     </div>
-</div>
+</div> -->
     
 
 
