@@ -1,6 +1,6 @@
 //variables for hosting questions and answer choices
-var questionEl = document.getElementsByClassName("display-4");
-var answersEl = document.getElementsByClassName("lead");
+var questionEl = document.querySelector(".display-4");
+var answersEl = document.querySelector(".lead");
 
 var startBtn = document.getElementById("startbutton");
 var highscoreEl = document.getElementById("highscore");
@@ -58,7 +58,7 @@ function countdown () {
 
 function displayQuestions() {
    questionEl.textContent = questionSequence[questionQueue].question
-    answersEl.innerHTML = questionSequence[questionQueue].answers;
+    answersEl.textContent = questionSequence[questionQueue].answers;
 };
 
 startBtn.addEventListener("click", beginQuiz);
