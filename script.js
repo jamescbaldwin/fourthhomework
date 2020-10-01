@@ -8,11 +8,11 @@ var answer4 = document.getElementById("4");
 
 var startBtn = document.getElementById("startbutton");
 var highscoreEl = document.getElementById("highscore");
-
+var captionEl = document.getElementById("caption");
 var bottomTextEl = document.getElementById("bottomText");
 var questionQueue = 0;
 var timerobject = '';
-var correctAnswer = 0;
+var correctAnswerEl = 0;
 var incorrectAnswer = 0;
 //other variables needed?
 // var reviewEl = document.querySelector("#reviewAnswer");
@@ -34,7 +34,7 @@ var questionSequence = [{
     answer2: "POWERPOINT",
     answer3: "NOTEPAD",
     answer4: "WINDOWS 10",
-    correctAnswer: "POWERPOINT"
+    correctAnswer: '2'
 },
 {
     question: "Javascript was initially desinged by Brendan Eich, while a developer for which tech company?",
@@ -42,7 +42,7 @@ var questionSequence = [{
     answer2: "APPLE",
     answer3: "MOZILLA",
     answer4: "NETSCAPE",
-    correctAnswer: "NETSCAPE"
+    correctAnswer: '4'
 },
 {
     question: "Which of the following is proper JavaScript notation for listing an array",
@@ -50,7 +50,7 @@ var questionSequence = [{
     answer2: "SQUARE BRACKETS",
     answer3: "DOUBLE-QUOTES",
     answer4: "PARENTHESIS",
-    correctAnswer: "SQUARE BRACKETS"
+    correctAnswer: '2'
 },
 {
     question: "True/False values are otherwise known in Javascript as?",
@@ -58,7 +58,7 @@ var questionSequence = [{
     answer2: "BINARY VALUES",
     answer3: "LOGIC VALUES",
     answer4: "PROPOSITIONAL VALUES",
-    correctAnswer: "BOOLEAN VALUES"
+    correctAnswer: '1'
 }];
 
 var lastQuestion = questionSequence.length -1;
@@ -70,32 +70,35 @@ function countdown () {
         time--
     } else {
         endofgame()
-    }};
+    }}
+
+ 
+
 
 function displayQuestions() {
-    var x = questionSequence[questionQueue];
    questionEl.textContent = questionSequence[questionQueue].question; //innerHMTL adds content wiithin given element, rather than changing content of element itself
-    // answersEl.innerHTML = questionSequence[questionQueue].answers;
-    answer1.innerHTML = x.answer1;
-    answer2.innerHTML = x.answer2;
-    answer3.innerHTML = x.answer3;
-    answer4.innerHTML = x.answer4;
-};
+    answer1.innerHTML = questionSequence[questionQueue].answer1;
+    answer2.innerHTML = questionSequence[questionQueue].answer2;
+    answer3.innerHTML = questionSequence[questionQueue].answer3;
+    answer4.innerHTML = questionSequence[questionQueue].answer4;
+}
 
 startBtn.addEventListener("click", beginQuiz);
 
 function beginQuiz() {
+    // answersEl.style.display = "block";
     timerobject = setInterval(countdown, 1000);
     displayQuestions();
+};
 
-
-function checkAnswer(userChoice) {
-    if (userChoice == questionSequence[questionQueue].correct) {
-        captionEl.innerText = 'Correct Answer'
-        correctAnswer++
+function checkAnswer(userAnswer) {
+    console.log(userAnswer);
+    if (userAnswer = questionSequence[questionQueue].correctAnswer) {
+        captionEl.textContent = "Correct Answer"
+        correctAnswerEl++
     } else {
-        captionEl.innerText = 'Wrong Answer'
-        wrongAnswer++;
+        captionEl.textContent = "Incorrect Answer"
+        incorrectAnswer++;
         time--
     } if (questionQueue < lastQuestion) {
         questionQueue++
@@ -103,13 +106,13 @@ function checkAnswer(userChoice) {
     } else {
         endofgame();
     }
-}};
+}
 
 function endofgame() {
     questionEl.innerHTML = "JavaScript Coding Quiz";
     answersEl.innerHTML = "The following is a timed-quiz, containing multiple-choice questions";
     clearInterval(timerobject)
-};
+}
 
 function user() {
 var userInitials = document.getElementById('userInitials').value
