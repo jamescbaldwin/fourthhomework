@@ -10,68 +10,31 @@
 <body >
     <nav class="navbar navbar-expand-md fixed-top">
         <div class="container-fluid">
-              <div id="highscore" class="nav-item nav-link"> High Scores</div>
-              <h1 id="navbar-title"></h1>
-              <table id=timers style="text-align: right;">
+              <div id="highscore" class="nav-item nav-link"> View High Scores</div>
+              <table id="timer">
                 <tr>
                   <td> Time Remaining: </td>
-                  <td> <span id="timer" class="nav-item"></span> </td>
+                  <td> <span id="gameTimer" class="nav-item"></span> </td>
                 </tr>
               </table>
           </div>
         </div>
       </nav>
-    <!-- <header class="container">
-        <div class="row">
-            <div class="col-md-6"> 
-                <div id="highscore">View Highscore!</div>             
-              </div>
-              <div class="col-md-6">
-                  <div id="timer" class="text-right">Time Remaining:</div>
-              </div>
-            </div>
-    </header> -->
-
-
-   <!-- <button id="startbutton" class="text-center">Begin Quiz!</button> -->
-   <div>  
-   <div class="card" style="width: 18rem; align-items: center;">
-            <div class="container-fluid">
-              <h3 id="content" style="text-align: center;">Coding Quiz Challenge!</h5>
-            <!-- <ul class="answerChoices">
-            <button style="padding: 6px">
-                <li class="answerChoice" id="answer1" onclick="checkAnswer('1')">This quiz will be multiple-choice and timed</li> 
-            </button> 
-            <button style="padding: 6px">
-                <li class="answerChoice" id="answer2" onclick="checkAnswer('2')">Incorrect answers will result in a 10-second deduction</li>
-            </button>
-            <button style="padding: 6px">
-                <li class="answerChoice" id="answer3" onclick="checkAnswer('3')">Select an answer by clicking</li>
-            </button>
-            <button style="padding: 6px">
-                <li class="answerChoice" id="answer4" onclick="checkAnswer('4')">Enter your initials after final question to submit score</li>
-            </button>
-            </ul> -->
-            <!-- <div class="card-body">
-                <button id="prevQuestion">Previous Question</button>
-                <button id="nextQuestion">Next Question</button>            
-            </div> -->
-            
-          </div>
-        </div> 
-
-<!-- <div class="col-md-12 text-center">
-    <div id="bottomText">
-        <h3 id="reviewAnswer">Answer</h3>
-        <label>Enter User Initials</label>
-        <input type="text: align-left" id="userInitials">
-        <button id="player" onclick='player'> player information
-        </button>
+    <div class="jumbotron">
+        <h1 class="display-4">JavaScript Coding Quiz</h1>
+        <p class="lead">The following is a timed-quiz, containing multiple-choice questions</p>
+        <hr class="my-4">
+        <p id="caption"></p>
+        <a class="btn btn-primary btn-lg" href="#" role="button" id="startbutton">Begin Quiz</a>
     </div>
-</div> -->
-    
-
-
+    <footer>
+        <table id="userInitials">
+            <td>User Initials:</td>
+        </table>
+        <table id="userScore">
+            <td><td>User Score:</td></td>
+        </table>
+    </footer>
     <script type='text/javascript' src="./script.js"></script>
 </body>
 </html>

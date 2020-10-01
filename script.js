@@ -1,24 +1,23 @@
 //variables for hosting questions and answer choices
-var questionEl = document.getElementById("questionNum");
-var answersEl = document.querySelector(".answerChoices");
-//variables for individual answer choices
-var answer1El = document.getElementById("answer1");
-var answer2El = document.getElementById("answer2");
-var answer3El = document.getElementById("answer3");
-var answer4El = document.getElementById("answer4");
-//beginnning the quiz, and displaying the highscore
+var questionEl = document.getElementsByClassName("display-4");
+var answersEl = document.getElementsByClassName("lead");
+
 var startBtn = document.getElementById("startbutton");
 var highscoreEl = document.getElementById("highscore");
-//other variables needed?
-var reviewEl = document.querySelector("#reviewAnswer");
-var storeData = JSON.parse(localStorage.getItem('data'));
-var timerEl = document.getElementById("timer");
+
 var bottomTextEl = document.getElementById("bottomText");
-//object/index of question/answers, timer, quiz grader
 var questionQueue = 0;
 var timerobject = '';
 var correctAnswer = 0;
 var incorrectAnswer = 0;
+//other variables needed?
+// var reviewEl = document.querySelector("#reviewAnswer");
+
+var saveData = JSON.parse(localStorage.getItem('data')); 
+var timerEl = document.getElementById("timer");
+console.log('timerEl:', timerEl);
+console.log('timerobject', timerobject);
+
 
 // create buttons dynamically and add set attribute -> to get thee value look into event.target.value 
 // set timeout function 
@@ -36,7 +35,7 @@ var questionSequence = [{
     correctAnswer: "NETSCAPE"
 },
 {
-    question: "Which of the following is proper JavaScript notation for listing an array?",
+    question: "Which of the following is proper JavaScript notation for listing an array",
     answers: ["CURLY BRACKETS", "SQUARE BRACKETS", "DOUBLE-QUOTES", "PARENTHESIS"],
     correctAnswer: "SQUARE BRACKETS"
 },
@@ -44,74 +43,62 @@ var questionSequence = [{
     question: "True/False values are otherwise known in Javascript as?",
     answers: ["BOOLEAN VALUES", "BINARY VALUES", "LOGIC VALUES", "PROPOSITIONAL VALUES"],
     correctAnswer: "BOOLEAN VALUES"
-}
+}];
 
-function countdown() {
-    setTimeout(function(){ alert("Hello"); }, 180000);
-  }
+var lastQuestion = questionSequence.length -1;
+var time = lastQuestion * 20;
 
-startBtn.addEventListener("click", function () {
-    for (let i = 0; i < questionSequence.length; i++) {
-        const element = questionSequence[i];
-        
+function countdown () {
+    timerEl.textContent = "Time Remaining: " + time;
+    if (time > 0) {
+        time--
+    } else {
+        endofgame()
+    }};
+
+function displayQuestions() {
+   questionEl.textContent = questionSequence[questionQueue].question
+    answersEl.innerHTML = questionSequence[questionQueue].answers;
+};
+
+startBtn.addEventListener("click", beginQuiz);
+
+function beginQuiz() {
+    timerobject = setInterval(countdown, 1000);
+    displayQuestions();
+
+
+function checkAnswer(userChoice) {
+    if (userChoice == questionSequence[questionQueue].correct) {
+        captionEl.innerText = 'Correct Answer'
+        correctAnswer++
+    } else {
+        captionEl.innerText = 'Wrong Answer'
+        wrongAnswer++;
+        time--
+    } if (questionQueue < lastQuestion) {
+        questionQueue++
+        displayQuestions();
+    } else {
+        endofgame();
     }
+}};
+
+function endofgame() {
+    questionEl.innerHTML = "JavaScript Coding Quiz";
+    answersEl.innerHTML = "The following is a timed-quiz, containing multiple-choice questions";
+    clearInterval(timerobject)
+};
+
+function user() {
+var userInitials = document.getElementById('userInitials').value
+savedata.push({
+    user: userInitials,
+    score: correctAnswer,
+    time: 10 - timerobject,
 })
-// var finalQuestion = questionSequence.length - 1;
-// var time = finalQuestion * 5;
 
-// function countdown() {
-//     timerEl.textContent = "Time Remaining: " + time;
-//     if (time > 0) {
-//         time--
-//     } else {
-//         gameEnd() //referenced among last functions, once quiz is complete or time runs out
-//     }
-// }
-
-// answersEl.style.display = "block";
-// bottomTextEl.style.display = "none";
-
-// function displayQuestions() {
-//     var questionShown = questionSequence[questionQueue];
-//     questionEl.textContent = questionSequence[questionQueue].question;
-//     answer1El.innerHTML = questionShown.answer1El;
-//     answer2El.innerHTML = questionShown.answer2El;
-//     answer3El.innerHTML = questionShown.answer3El;
-//     answer4El.innerHTML = questionShown.answer4El;
-// }
-
-// startBtn.addEventListener("click", beginQuiz);
-
-// function beginQuiz() {
-//     start.style.display = "none";
-//     choicesEl.style.display = 'block';
-//     timerEl = setInterval(countdown, 1000)
-//     displayQuestions();
-// }
-
-// function checkAnswer(userAnswer) {
-//     console.log('userAnswer:', userAnswer)
-//     if (userAnswer === questionSequence[currentQuestion].correct) {
-//         captionEl.innerHTML = "Correct Answer";
-//         correctAnswer++;
-//     } else {
-//         captionEl.innerHTML = "Incorrect Answer";
-//         incorrectAnswer++;
-//         time--
-//     }
-// }
-
-// if (currentQuestion < finalQuestion) {
-//     currentQuestion++
-//     displayQuestions();
-// } else {
-//     gameEnd();
-// }
-
-// function gameEnd() {
-//     questionEl.style.display = "none";
-//     answersEl.style.display = "none";
-//     bottomTextEl.style.display = "block";
-//     reviewEl.style.display = "none";
-//     clearInterval(timerEl);
-// }
+localStorage.setItem('data', JSON.stringify(savedata))
+endTextEl.innerHTML = '<h1> Thank you for playing </h1>'
+highscoreEl.innerHTML = ('View Highscore:' + ' ' + JSON.parse(localStorage.getItem('data'))[0].score);
+}

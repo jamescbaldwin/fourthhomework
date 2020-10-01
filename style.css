@@ -1,7 +1,6 @@
-.card {
-    margin: auto;
-    /* border-style: solid;
-    border-color: black;
-    border-width: 3px; */
-    padding: 10px;
+.jumbotron {
+    margin-top: 10%;
+   margin-left: 30%;
+   margin-right: 30%;
+    text-align: center;
 }
