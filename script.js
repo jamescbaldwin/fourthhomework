@@ -9,7 +9,7 @@ var answer4 = document.getElementById("4");
 var startBtn = document.getElementById("startbutton");
 var highscoreEl = document.getElementById("highscore");
 var captionEl = document.getElementById("caption");
-var bottomTextEl = document.getElementById("bottomText");
+var footerTextEl = document.getElementById("footnote");
 var questionQueue = 0;
 var timerobject = '';
 var correctAnswerEl = 0;
@@ -17,7 +17,7 @@ var incorrectAnswer = 0;
 //other variables needed?
 // var reviewEl = document.querySelector("#reviewAnswer");
 
-var saveData = JSON.parse(localStorage.getItem('data')); 
+var savedata = JSON.parse(localStorage.getItem('data'))
 var timerEl = document.getElementById("timer");
 console.log('timerEl:', timerEl);
 console.log('timerobject', timerobject);
@@ -93,7 +93,7 @@ function beginQuiz() {
 
 function checkAnswer(userAnswer) {
     console.log(userAnswer);
-    if (userAnswer = questionSequence[questionQueue].correctAnswer) {
+    if (userAnswer === questionSequence[questionQueue].correctAnswer) {
         captionEl.textContent = "Correct Answer"
         correctAnswerEl++
     } else {
@@ -110,19 +110,28 @@ function checkAnswer(userAnswer) {
 
 function endofgame() {
     questionEl.innerHTML = "JavaScript Coding Quiz";
-    answersEl.innerHTML = "The following is a timed-quiz, containing multiple-choice questions";
+    answer1.innerHTML = "";
+    answer2.innerHTML = "";
+    answer3.innerHTML = "";
+    answer4.innerHTML = "";
+    answersEl.innerHTML = "     Thank you for playing!";
+    footerTextEl.style.display = "block";
+    captionEl.style.display = "none";
     clearInterval(timerobject)
 }
 
 function user() {
-var userInitials = document.getElementById('userInitials').value
-savedata.push({
-    user: userInitials,
-    score: correctAnswer,
-    time: 10 - timerobject,
-})
+    var userInitials = document.getElementById('userInitials').value
+    console.log('userInitials:', userInitials);
 
-localStorage.setItem('data', JSON.stringify(savedata))
-endTextEl.innerHTML = '<h1> Thank you for playing </h1>'
-highscoreEl.innerHTML = ('View Highscore:' + ' ' + JSON.parse(localStorage.getItem('data'))[0].score);
+    savedata.push({
+        user: userInitials,
+        score: correctAnswerEl,
+        time: 10 - timerobject,
+    })
+
+localStorage.setItem('data', JSON.stringify(savedata));
+highscoreEl.innerHTML = ('View Highscore: ' + ' ' +  JSON.parse(localStorage.getItem('data'))[0].score);
+console.log('data', data);
+highscoreEl.textContent(data)
 }

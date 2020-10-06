@@ -36,12 +36,14 @@
         <a class="btn btn-primary btn-lg" href="#" role="button" id="startbutton">Begin Quiz</a>
     </div>
     <footer>
-        <table id="userInitials">
-            <td>User Initials:</td>
-        </table>
-        <table id="userScore">
-            <td><td>User Score:</td></td>
-        </table>
+      <div class='col-md-10 text-center'>
+        <div id="footnote">
+          <label>Enter User Initials (First/Last)</label>
+          <input type="text" id="userInitials">
+          <button id="userButton" onclick="user()">Submit Initials</button>
+        </div id="userScore" style="display: none">
+
+      </div>
     </footer>
     <script type='text/javascript' src="./script.js"></script>
 </body>
